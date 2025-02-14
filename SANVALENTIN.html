@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        /* Reset de estilos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fondo con imagen y estilo de página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F9F1D3; /* Color suave de fondo */
+            color: #5E2C8D; /* Morado para el texto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            backdrop-filter: blur(5px); /* Hace que el contenido tenga un fondo difuso */
+        }
+
+        /* Estilo de la caja principal */
+        .container {
+            background-color: rgba(255, 221, 0, 0.8); /* Amarillo brillante con opacidad */
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Estilo del mensaje */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #5E2C8D;
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        /* Animación de rebote en el texto */
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(-300px);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(30px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo de los tulipanes */
+        .tulip {
+            font-size: 3em;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Botón */
+        .btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #5E2C8D;
+            color: #FFF;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #9B59B6;
+        }
+
+        /* Estilo del modal */
+        .modal {
+            display: none; /* Inicialmente oculto */
+            position: fixed;
+            z-index: 1; /* Asegura que esté por encima de otros elementos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro para el modal */
+            padding-top: 60px;
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Estilo del formulario dentro del modal */
+        .modal-content input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.2em;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #5E2C8D;
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .modal-content button:hover {
+            background-color: #9B59B6;
+        }
+
+        /* Botón de cerrar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hola Grecia, mi mujer hermosa.</h1>
+        <p>Este 14 de febrero, ¿Quieres ser mi San Valentín?</p>
+        <div class="tulip">🌷🌷🌷</div>
+        <button class="btn" onclick="openModal()">Sí, quiero ser tu San Valentín</button>
+        <button class="btn" onclick="openModal2()">No, no quiero</button>
+    </div>
+
+    <!-- Modals -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1>¡Nos vemos más tarde para un día de mucho amor y sorpresas 😍!</h1>
+            <h2>Atte: Alejandro, tu san valentín, tu novio, tu hombre y tu futuro esposo</h2>
+        </div>
+    </div>
+
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal2()">&times;</span>
+            <h1>¡Yo sé que querés, solo le diste para saber que salía 😛!</h1>
+            <h2>Atte: Alejandro, tu san valentín, tu novio, tu hombre y tu futuro esposo</h2>
+        </div>
+    </div>
+
+    <script>
+        // Abre el modal
+        function openModal() {
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function openModal2() {
+            document.getElementById('myModal2').style.display = "block";
+        }
+
+        // Cierra el modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        function closeModal2() {
+            document.getElementById('myModal2').style.display = "none";
+        }
+
+        // Cierra el modal si el usuario hace clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal', 'myModal2')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
